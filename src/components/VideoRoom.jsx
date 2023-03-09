@@ -77,12 +77,15 @@ export const VideoRoom = () => {
 
   return (
     <div
-      style={{ display: 'flex', justifyContent: 'center' }}
+      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 200px)',
+          gridTemplateColumns: 'repeat(2, 40vw)',
+          marginRight: '4vw',
+          columnGap: '8vw',
+          rowGap: '5vw',
         }}
       >
         {users.map((user) => (

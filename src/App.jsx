@@ -1,22 +1,14 @@
-import { useState } from 'react';
-import './App.css';
-import { VideoRoom } from './components/VideoRoom';
+
+import { Route, Routes } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import Video from './Video';
+
 
 function App() {
-  const [joined, setJoined] = useState(false);
-  return (
-    <div className="App">
-      <h1>Cum Call</h1>
-
-      {!joined && (
-        <button onClick={() => setJoined(true)}>
-          Join Room
-        </button>
-      )}
-
-      {joined && <VideoRoom />}
-    </div>
-  );
+  return (<Routes>
+    <Route exact path="/" element={<Dashboard />} />
+    <Route exact path="/join" element={<Video />} />
+  </Routes>);
 }
 
 export default App;
