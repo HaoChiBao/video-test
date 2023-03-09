@@ -4,7 +4,7 @@ import { VideoPlayer } from './VideoPlayer';
 
 const APP_ID = 'fd724da3607e4f568c1775a94077234d';
 const TOKEN =
-  '007eJxTYDiV7c31rfi+8QYFm926m2PZmBmlz83Qe/44nSsr9umSDSsUGNJSzI1MUhKNzQzMU03STM0skg3NzU0TLU0MzM2NjE1SvC6xpTQEMjIcfBvMwAiFID4LQ25iZh4DAwDfOh38';
+  '007eJxTYNBaGvRSYOnpinWKGppOj1JM9nL5tz++O4t5A/Ohs8yzbyxUYEhLMTcySUk0NjMwTzVJMzWzSDY0NzdNtDQxMDc3MjZJ0bTjTGkIZGSY9oaBkZEBAkF8FobcxMw8BgYA6cwdWA==';
 const CHANNEL = 'main';
 
 const client = AgoraRTC.createClient({
@@ -24,7 +24,7 @@ export const VideoRoom = () => {
     }
 
     if (mediaType === 'audio') {
-      // user.audioTrack.play()
+      user.audioTrack.play()
     }
   };
 
@@ -34,7 +34,7 @@ export const VideoRoom = () => {
     );
   };
 
-  const temp = null
+  let temp = null
 
   useEffect(() => {
     client.on('user-published', handleUserJoined);
@@ -61,6 +61,7 @@ export const VideoRoom = () => {
         ]);
         client.publish(tracks);
         temp = tracks
+        // console.log(temp, 'temp')
       });
 
     return () => {
