@@ -18,14 +18,18 @@ export const VideoPlayer = ({ user }) => {
 
     video.addEventListener('play', function () {
       setInterval(function () {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
 
-        context.drawImage(video, 0, 0, canvas.width, canvas.height)
+        // bandaid solution fix later
+        if(canvas.width != 0){ // <--- bandaid solution
+          
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+  
+          context.drawImage(video, 0, 0, canvas.width, canvas.height)
+  
+          const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+        }
 
-        // if(context.w)
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
-        // console.log(imageData)
 
       }, 1000 / 60)
     })
@@ -37,7 +41,7 @@ export const VideoPlayer = ({ user }) => {
       <Canvas style={{ width: '45vw' }} id={'canvas' + user.uid} />
       <div
         ref={ref}
-      // style={{ width: '45vw', height: '30vw' }}
+      style={{ width: '45vw', height: '30vw' }}
       >
       </div>
     </div>
