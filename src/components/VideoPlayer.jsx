@@ -23,7 +23,10 @@ export const VideoPlayer = ({ user }) => {
 
         context.drawImage(video, 0, 0, canvas.width, canvas.height)
 
+        // if(context.w)
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+        // console.log(imageData)
+
       }, 1000 / 60)
     })
   });
