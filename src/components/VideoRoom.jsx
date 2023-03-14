@@ -80,6 +80,7 @@ export const VideoRoom = () => {
     <div
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
+      
       <div
         style={{
           display: 'grid',
