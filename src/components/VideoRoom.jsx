@@ -42,10 +42,11 @@ export const VideoRoom = () => {
 
     client
       .join(APP_ID, CHANNEL, TOKEN, null)
-      .then((uid) =>
-        Promise.all([
-          AgoraRTC.createMicrophoneAndCameraTracks(),
-          uid,
+      .then((uid) => 
+      Promise.all([
+        AgoraRTC.createMicrophoneAndCameraTracks(),
+        uid,
+        localStorage.setItem('wse-video-chat-uid', uid),
         ])
       )
       .then(([tracks, uid]) => {
