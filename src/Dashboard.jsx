@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { VideoRoom } from './components/VideoRoom';
 import Gradient from './components/Gradient';
 import Video from './Video';
-<<<<<<< HEAD
+
 import config from "./config"
 
 import 'firebase/compat/analytics';
@@ -14,9 +14,9 @@ import 'firebase/compat/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import 'firebase/compat/auth';
-=======
+
 import './styling/dash.css'
->>>>>>> master
+
 
 window.onload = function () {
     const script0 = document.createElement('script');
@@ -46,13 +46,15 @@ window.onload = function () {
     document.body.appendChild(script3);
 }
 
-<<<<<<< HEAD
-function Dashboard() {
-    const [joined, setJoined] = useState(false);
+function Dashboard({ setJoined }) {
     const [usernameValue, setUsernameValue] = useState("");
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
     firebase.initializeApp(config);
 
-    const uploadUsername = async(e) => {
+    const uploadUsername = async (e) => {
         e.preventDefault();
         setJoined(true);
         const firestore = firebase.firestore();
@@ -64,11 +66,7 @@ function Dashboard() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
     }
-=======
-function Dashboard({ setJoined }) {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
->>>>>>> master
+
 
     return (
         <div style={{ position: 'relative' }}>
@@ -79,25 +77,16 @@ function Dashboard({ setJoined }) {
             />
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 1 }}>
                 <h1>Dashboard</h1>
-<<<<<<< HEAD
-            )}
 
-            {!joined && (
                 <input value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)} placeholder="Enter Your Username" />
-            )}
 
-            {!joined && (
-                <button onClick={uploadUsername} disabled={!usernameValue}>
+
+                <button onClick={() => {
+                    uploadUsername();
+                    setJoined(true);
+                }} disabled={!usernameValue}>
                     Join Room
                 </button>
-            )}
-=======
-                <button
-                    className='join'
-                    onClick={() => setJoined(true)}
->>>>>>> master
-
-                >Join Room</button>
             </div>
         </div >
     );
