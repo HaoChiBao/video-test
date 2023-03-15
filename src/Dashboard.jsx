@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { VideoRoom } from './components/VideoRoom';
 import Gradient from './components/Gradient';
 import Video from './Video';
+import './styling/dash.css'
 
 window.onload = function () {
     const script0 = document.createElement('script');
@@ -44,9 +45,13 @@ function Dashboard({ setJoined }) {
             />
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 1 }}>
                 <h1>Dashboard</h1>
-                <button onClick={() => setJoined(true)}>Join Room</button>
+                <button
+                    className='join'
+                    onClick={() => setJoined(true)}
+
+                >Join Room</button>
             </div>
-        </div>
+        </div >
     );
 }
 
