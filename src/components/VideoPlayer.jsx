@@ -90,7 +90,7 @@ export const VideoPlayer = ({ user }) => {
     }});
     hands.setOptions({
       maxNumHands: 2,
-      modelComplexity: 1,
+      modelComplexity: 1, 
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5
     });
