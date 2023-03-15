@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { VideoRoom } from './components/VideoRoom';
+import Gradient from './components/Gradient';
 import Video from './Video';
+<<<<<<< HEAD
 import config from "./config"
 
 import 'firebase/compat/analytics';
@@ -12,13 +14,16 @@ import 'firebase/compat/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import 'firebase/compat/auth';
+=======
+import './styling/dash.css'
+>>>>>>> master
 
-window.onload = function() {
+window.onload = function () {
     const script0 = document.createElement('script');
     const script1 = document.createElement('script');
     const script2 = document.createElement('script');
     const script3 = document.createElement('script');
-    
+
 
     script0.src = "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js";
     script1.src = "https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js";
@@ -41,6 +46,7 @@ window.onload = function() {
     document.body.appendChild(script3);
 }
 
+<<<<<<< HEAD
 function Dashboard() {
     const [joined, setJoined] = useState(false);
     const [usernameValue, setUsernameValue] = useState("");
@@ -58,12 +64,22 @@ function Dashboard() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
     }
+=======
+function Dashboard({ setJoined }) {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+>>>>>>> master
 
     return (
-        <div>
-            
-            {!joined && (
+        <div style={{ position: 'relative' }}>
+            <Gradient
+                width={screenWidth}
+                height={screenHeight}
+                style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }}
+            />
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 1 }}>
                 <h1>Dashboard</h1>
+<<<<<<< HEAD
             )}
 
             {!joined && (
@@ -75,11 +91,17 @@ function Dashboard() {
                     Join Room
                 </button>
             )}
+=======
+                <button
+                    className='join'
+                    onClick={() => setJoined(true)}
+>>>>>>> master
 
-
-            {joined && <Video />}
-        </div>
+                >Join Room</button>
+            </div>
+        </div >
     );
 }
+
 
 export default Dashboard;
