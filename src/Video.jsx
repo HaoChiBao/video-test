@@ -1,11 +1,16 @@
-import React from 'react'
-import { VideoRoom } from './components/VideoRoom';
-import { IconBar } from './components/IconBar'
+import React from "react";
+import { VideoRoom } from "./components/VideoRoom";
+import { IconBar } from "./components/IconBar";
+
 
 console.log(1)
 export default function Video() {
-    return (
+    let isMediaPipeOn = false;
 
+    const turnMediaPipeOn = () => {
+        return (<p>fadsfadf</p>)
+    }
+    return (
 
         <div>
             <h1 style={{ marginTop: '4%', marginBottom: '4%' }}
@@ -13,10 +18,11 @@ export default function Video() {
             >Meeting Name</h1>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <VideoRoom></VideoRoom>
+                <button onClick={turnMediaPipeOn()}>Turn On Hand Tracking</button>
+            <VideoRoom></VideoRoom>
                 <IconBar></IconBar>
             </div>
         </div>
 
-    )
+  );
 }
