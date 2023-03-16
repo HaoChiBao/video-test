@@ -127,7 +127,7 @@ export const VideoPlayer = ({ user }) => {
             const context = canvas.getContext('2d')
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            console.log(localUid, user.uid)
+            // console.log(localUid, user.uid)
             if(canvas.width != 0){ // <--- bandaid solution
               
               

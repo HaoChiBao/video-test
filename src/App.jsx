@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Dashboard from './Dashboard';
 import Video from './Video';
 
-
 function App() {
   const [joined, setJoined] = useState(false);
 
