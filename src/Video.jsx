@@ -6,10 +6,17 @@ console.log(1)
 export default function Video() {
     return (
 
+
         <div>
-            <h1>Meeting Name</h1>
-            <VideoRoom></VideoRoom>
-            <IconBar></IconBar>
+            <h1 style={{ marginTop: '4%', marginBottom: '4%' }}
+
+            >Meeting Name</h1>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+                <VideoRoom></VideoRoom>
+                <IconBar></IconBar>
+            </div>
         </div>
+
     )
 }
