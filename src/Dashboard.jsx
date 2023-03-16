@@ -56,25 +56,14 @@ function Dashboard({ setJoined }) {
 
     firebase.initializeApp(config);
 
-    const uploadUsername = async (e) => {
-        e.preventDefault();
-        setJoined(true);
+    const uploadUsername = async () => {
         const db = firebase.firestore();
 
-        const docRef = db.collection("loggedIn").doc(usernameValue);
-
-        docRef
-            .set({
-                uid: "n/a",
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                meetingID: meetingID
-            })
-            .then(() => {
-                console.log("Document successfully written!");
-            })
-            .catch((error) => {
-                console.error("Error writing document: ", error);
-            });
+        const loggedInUser = db.collection("loggedIn").doc();
+        await loggedInUser.add({
+            username: usernameValue,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
     };
 
     return (

@@ -156,7 +156,12 @@ export const VideoPlayer = ({ user }) => {
 
   return (
     <div>
-      Uid: {user.uid}
+      <div>
+        Username: {}
+      </div>
+      <div>
+        Uid: {user.uid}
+      </div>
       <div className='video-output'>
        <Canvas style={{ opacity: '1'}} id={'canvas' + user.uid} className = 'canvas-output'/>
       </div>
