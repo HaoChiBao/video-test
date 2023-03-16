@@ -83,7 +83,7 @@ export const VideoRoom = () => {
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
 
-      <Gradient></Gradient>
+      {/* <Gradient></Gradient> */}
 
       <div
         style={{

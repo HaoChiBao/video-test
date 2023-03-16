@@ -17,6 +17,7 @@ import 'firebase/compat/auth';
 
 import './styling/dash.css'
 
+function main(){}
 
 window.onload = function () {
     const script0 = document.createElement('script');
