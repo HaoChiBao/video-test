@@ -3,6 +3,7 @@ import { VideoRoom } from "./components/VideoRoom";
 import { IconBar } from "./components/IconBar";
 
 
+console.log(1)
 export default function Video() {
     let isMediaPipeOn = false;
 

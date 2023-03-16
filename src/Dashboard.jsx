@@ -16,6 +16,7 @@ import "firebase/compat/analytics";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import "firebase/compat/auth";
+function main(){}
 
 window.onload = function () {
     const script0 = document.createElement("script");
@@ -56,14 +57,26 @@ function Dashboard({ setJoined }) {
 
     firebase.initializeApp(config);
 
-    const uploadUsername = async () => {
+    const uploadUsername = async => {
         const db = firebase.firestore();
-
-        const loggedInUser = db.collection("loggedIn").doc();
-        await loggedInUser.add({
-            username: usernameValue,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        
+        const docRef = db.collection("loggedIn").doc();
+        
+        docRef
+            .set({
+                uid: usernameValue,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                meetingID: meetingID
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+                console.log(docRef.id)
+                localStorage.setItem("wse-video-chat-uid", docRef.id)
+                setJoined(true);
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
     };
 
     return (
@@ -113,7 +126,6 @@ function Dashboard({ setJoined }) {
                             className="join"
                             onClick={() => {
                                 uploadUsername();
-                                setJoined(true);
                             }}
                             disabled={!(usernameValue && meetingID)}
                         >

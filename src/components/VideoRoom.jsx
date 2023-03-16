@@ -3,6 +3,8 @@ import AgoraRTC from "agora-rtc-sdk-ng";
 import { VideoPlayer } from "./VideoPlayer";
 import Gradient from "./Gradient";
 
+import config from "../config.jsx";
+
 const APP_ID = "fd724da3607e4f568c1775a94077234d";
 const TOKEN = "007eJxTYIhnmboncn4O59XcCo0d3VKeS6xVekusXr969v9cHPfNh64KDGkp5kYmKYnGZgbmqSZppmYWyYbm5qaJliYG5uZGxiYp/8qEUhoCGRl4TwuxMjJAIIjPwpCbmJnHwAAAJ8AegA==";
 const CHANNEL = "main";
@@ -15,6 +17,7 @@ const client = AgoraRTC.createClient({
 export const VideoRoom = () => {
   const [users, setUsers] = useState([]);
   const [localTracks, setLocalTracks] = useState([]);
+  const UUID = localStorage.getItem("wse-video-chat-uid");
 
   const handleUserJoined = async (user, mediaType) => {
     await client.subscribe(user, mediaType);
@@ -41,12 +44,11 @@ export const VideoRoom = () => {
     client.on("user-left", handleUserLeft);
 
     client
-      .join(APP_ID, CHANNEL, TOKEN, null)
+      .join(APP_ID, CHANNEL, TOKEN, UUID)
       .then((uid) =>
         Promise.all([
           AgoraRTC.createMicrophoneAndCameraTracks(),
           uid,
-          localStorage.setItem("wse-video-chat-uid", uid),
         ])
       )
       .then(([tracks, uid]) => {
