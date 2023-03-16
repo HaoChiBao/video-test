@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mediapipe/camera_utils": "^0.3.1675466862",
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "@mediapipe/hands": "^0.4.1675469240",
     "@testing-library/jest-dom": "^5.16.5",
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/three": "^0.149.0",
     "agora-rtc-sdk-ng": "^4.16.1",
+    "js-camera": "^1.0.4",
     "bootstrap": "^5.2.3",
     "firebase": "^9.17.2",
     "react": "^18.2.0",
