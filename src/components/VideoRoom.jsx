@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { VideoPlayer } from './VideoPlayer';
+import Gradient from './Gradient';
 
 const APP_ID = 'fd724da3607e4f568c1775a94077234d';
 const TOKEN =
-  '007eJxTYBBaMidXOMqy7pbt1YmaBgdbWZdcaa1yvnJ4LieDXjfD+QwFhrQUcyOTlERjMwPzVJM0UzOLZENzc9NESxMDc3MjY5MU9//8KQ2BjAzcfzcyMzJAIIjPwpCbmJnHwAAArAYdMA==';
+  '007eJxTYJj2+iBfoV5qT0HRl4NVwq7zMuQ/7zOd5GiYGs47q4jlqY0CQ1qKuZFJSqKxmYF5qkmaqZlFsqG5uWmipYmBubmRsUnKI1XBlIZARoYNZ++zMjJAIIjPwpCbmJnHwAAA5nod/w==';
 const CHANNEL = 'main';
 
 const client = AgoraRTC.createClient({
@@ -42,11 +43,11 @@ export const VideoRoom = () => {
 
     client
       .join(APP_ID, CHANNEL, TOKEN, null)
-      .then((uid) => 
-      Promise.all([
-        AgoraRTC.createMicrophoneAndCameraTracks(),
-        uid,
-        localStorage.setItem('wse-video-chat-uid', uid),
+      .then((uid) =>
+        Promise.all([
+          AgoraRTC.createMicrophoneAndCameraTracks(),
+          uid,
+          localStorage.setItem('wse-video-chat-uid', uid),
         ])
       )
       .then(([tracks, uid]) => {
@@ -80,7 +81,9 @@ export const VideoRoom = () => {
     <div
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      
+
+      <Gradient></Gradient>
+
       <div
         style={{
           display: 'grid',
