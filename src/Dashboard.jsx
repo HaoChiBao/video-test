@@ -76,17 +76,21 @@ function Dashboard({ setJoined }) {
                 style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }}
             />
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 1 }}>
-                <h1>Dashboard</h1>
+                <h1 style={{ textAlign: 'center' }}>Dashboard</h1>
 
-                <input value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)} placeholder="Enter Your Username" />
+                <div className='inputContainer'>
+
+                    <input value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)} placeholder="Enter Your Username" />
 
 
-                <button onClick={() => {
-                    uploadUsername();
-                    setJoined(true);
-                }} disabled={!usernameValue}>
-                    Join Room
-                </button>
+                    <button
+                        onClick={() => {
+                            uploadUsername();
+                            setJoined(true);
+                        }} disabled={!usernameValue}>
+                        Join Room
+                    </button>
+                </div>
             </div>
         </div >
     );

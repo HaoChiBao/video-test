@@ -5,7 +5,7 @@ import Gradient from './Gradient';
 
 const APP_ID = 'fd724da3607e4f568c1775a94077234d';
 const TOKEN =
-  '007eJxTYJj2+iBfoV5qT0HRl4NVwq7zMuQ/7zOd5GiYGs47q4jlqY0CQ1qKuZFJSqKxmYF5qkmaqZlFsqG5uWmipYmBubmRsUnKI1XBlIZARoYNZ++zMjJAIIjPwpCbmJnHwAAA5nod/w==';
+  '007eJxTYIhnmboncn4O59XcCo0d3VKeS6xVekusXr969v9cHPfNh64KDGkp5kYmKYnGZgbmqSZppmYWyYbm5qaJliYG5uZGxiYp/8qEUhoCGRl4TwuxMjJAIIjPwpCbmJnHwAAAJ8AegA==';
 const CHANNEL = 'main';
 
 const client = AgoraRTC.createClient({
@@ -81,8 +81,6 @@ export const VideoRoom = () => {
     <div
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-
-      <Gradient></Gradient>
 
       <div
         style={{
