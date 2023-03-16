@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Hands } from '@mediapipe/hands/hands';
 import {drawLandmarks} from '@mediapipe/drawing_utils/drawing_utils';
 import {drawConnectors} from '@mediapipe/drawing_utils/drawing_utils';
+import {Camera} from '@mediapipe/camera_utils/camera_utils'
+
 import './VideoPlayer.css'
 
 const Canvas = props => {
@@ -110,45 +112,46 @@ export const VideoPlayer = ({ user }) => {
       });
       camera.start();
     }
-
-    // video.addEventListener('play', function () {
-    //   setInterval(async function () {
-        
-    //     try{
-    //     const canvas = document.querySelector(`#canvas${user.uid}`)
-        
-    //     // // console.log(canvas.width, 'canvas.width')
-    //     canvas.width = video.videoWidth;
-    //     canvas.height = video.videoHeight;
-        
-    //     // bandaid solution fix later
-        
-    //     // console.log(canvas.width)
-    //     // await hands.send({image: video})
-    //     if(canvas.width != 0){ // <--- bandaid solution
+    if(localUid != user.uid){
+      
+      video.addEventListener('play', function () {
+        setInterval(async function () {
+          
+          try{
             
-    //         // console.log(1)
-    //         // context = canvas.getContext('2d')
-    //         // context.drawImage(video, 0, 0, canvas.width, canvas.height)
-    
-    //         // console.log(localUid, user.uid)
-    //         if(localUid == user.uid){
+            // bandaid solution fix later
+            
+            // console.log(canvas.width)
+            // await hands.send({image: video})
+            const canvas = document.querySelector(`#canvas${user.uid}`)
+            const context = canvas.getContext('2d')
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            console.log(localUid, user.uid)
+            if(canvas.width != 0){ // <--- bandaid solution
               
-    //           console.log(1)
-    //           // const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
-    //           // console.log(imageData)
-    //           // await hands.send({image: imageData.data})
-    //         }
-            
-    //       }
-
-    //     } catch(err){
-    //       // console.log(err)
-    //     }
-
-
-    //   }, 1000 / 60)
-    // })
+              
+              // console.log(1)
+              
+              // console.log(canvas.width, 'canvas.width')
+              
+              context.drawImage(video, 0, 0, canvas.width, canvas.height)
+              // console.log(1)
+              // const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+              // console.log(imageData)
+              // await hands.send({image: imageData.data})
+              
+            }
+  
+          } catch(err){
+            // console.log(err)
+          }
+  
+  
+        }, 1000 / 60)
+      })
+    }
+    
   });
 
   return (
