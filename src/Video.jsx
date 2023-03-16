@@ -7,9 +7,7 @@ console.log(1)
 export default function Video() {
     let isMediaPipeOn = false;
 
-    const turnMediaPipeOn = () => {
-        return (<p>fadsfadf</p>)
-    }
+  
     return (
 
         <div>
@@ -18,7 +16,7 @@ export default function Video() {
             >Meeting Name</h1>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <button onClick={turnMediaPipeOn()}>Turn On Hand Tracking</button>
+                <button>Turn On Hand Tracking</button>
             <VideoRoom></VideoRoom>
                 <IconBar></IconBar>
             </div>
