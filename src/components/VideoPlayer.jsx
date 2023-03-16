@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Hands } from '@mediapipe/hands/hands';
 import {drawLandmarks} from '@mediapipe/drawing_utils/drawing_utils';
 import {drawConnectors} from '@mediapipe/drawing_utils/drawing_utils';
+import { Camera } from '@mediapipe/camera_utils/camera_utils';
+
 import './VideoPlayer.css'
 
 const Canvas = props => {
@@ -159,7 +161,7 @@ export const VideoPlayer = ({ user }) => {
       </div>
       <div
         ref={ref}
-      style={{ position:'absolute', opacity:'1' }}
+      style={{ width: '45vw', height: '30vw', position:'absolute', opacity:'1' }}
       >
       </div>
     </div>
