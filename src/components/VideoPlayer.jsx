@@ -4,6 +4,13 @@ import {drawLandmarks} from '@mediapipe/drawing_utils/drawing_utils';
 import {drawConnectors} from '@mediapipe/drawing_utils/drawing_utils';
 import {Camera} from '@mediapipe/camera_utils/camera_utils'
 
+import config from "../config.jsx";
+import "firebase/compat/analytics";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+import "firebase/compat/analytics";
+
 import './VideoPlayer.css'
 
 const Canvas = props => {
@@ -16,6 +23,14 @@ function getRelativeContext(percents, context) {
     y: percents.y * parseInt(context.canvas.height),
     z: percents.z
   }
+}
+
+function getUsernameFromUid(uid) {
+  firebase.initializeApp(config);
+  const db = firebase.firestore();
+  const docRef = db.collection("loggedIn").doc(uid);
+
+  return uid
 }
 
 export const VideoPlayer = ({ user }) => {
@@ -112,42 +127,25 @@ export const VideoPlayer = ({ user }) => {
       });
       camera.start();
     }
+
+    // if the user is not the local user
     if(localUid != user.uid){
       
       video.addEventListener('play', function () {
-        setInterval(async function () {
-          
+        setInterval(function () {
           try{
-            
-            // bandaid solution fix later
-            
-            // console.log(canvas.width)
-            // await hands.send({image: video})
             const canvas = document.querySelector(`#canvas${user.uid}`)
             const context = canvas.getContext('2d')
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            // console.log(localUid, user.uid)
-            if(canvas.width != 0){ // <--- bandaid solution
+
+            if(canvas.width != 0){ 
               
-              
-              // console.log(1)
-              
-              // console.log(canvas.width, 'canvas.width')
-              
-              context.drawImage(video, 0, 0, canvas.width, canvas.height)
-              // console.log(1)
-              // const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
-              // console.log(imageData)
-              // await hands.send({image: imageData.data})
-              
+              context.drawImage(video, 0, 0, canvas.width, canvas.height) 
             }
-  
           } catch(err){
-            // console.log(err)
+            console.log(err)
           }
-  
-  
         }, 1000 / 60)
       })
     }
@@ -156,7 +154,7 @@ export const VideoPlayer = ({ user }) => {
 
   return (
     <div>
-      Uid: {user.uid}
+      Uid: {getUsernameFromUid(user.uid)}
       <div className='video-output'>
        <Canvas style={{ opacity: '1'}} id={'canvas' + user.uid} className = 'canvas-output'/>
       </div>

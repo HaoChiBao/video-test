@@ -58,9 +58,8 @@ function Dashboard({ setJoined }) {
     firebase.initializeApp(config);
 
     const uploadUsername = async => {
-        setJoined(true);
         const db = firebase.firestore();
-
+        
         const docRef = db.collection("loggedIn").doc();
         
         docRef
@@ -69,9 +68,11 @@ function Dashboard({ setJoined }) {
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 meetingID: meetingID
             })
-            .then((promise) => {
+            .then(() => {
                 console.log("Document successfully written!");
-                console.log(promise)
+                console.log(docRef.id)
+                localStorage.setItem("wse-video-chat-uid", docRef.id)
+                setJoined(true);
             })
             .catch((error) => {
                 console.error("Error writing document: ", error);
@@ -125,7 +126,6 @@ function Dashboard({ setJoined }) {
                             className="join"
                             onClick={() => {
                                 uploadUsername();
-                                setJoined(true);
                             }}
                             disabled={!(usernameValue && meetingID)}
                         >
