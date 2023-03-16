@@ -121,6 +121,7 @@ function Dashboard({ setJoined }) {
 
                     <div>
                         <button
+                            className="join"
                             onClick={() => {
                                 uploadUsername();
                                 setJoined(true);

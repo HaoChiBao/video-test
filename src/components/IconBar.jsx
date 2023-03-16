@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { faVideoCamera, faPhoneSlash, faMicrophone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../styling/icon.css'
+
+
 
 export const IconBar = () => {
 
@@ -9,15 +14,20 @@ export const IconBar = () => {
         <div style={{
             display: 'flex',
             justifyContent: 'center',
+            width: '100vw'
 
         }}>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                marginTop: '3%'
+                width: '25vw',
+                marginTop: '20px'
             }}>
 
-                helllo
+                <button> <FontAwesomeIcon icon={faVideoCamera} size="3x" /></button>
+                <button> <FontAwesomeIcon icon={faPhoneSlash} size="3x" /></button>
+                <button> <FontAwesomeIcon icon={faMicrophone} size="3x" /></button>
+
 
             </div>
         </div>
