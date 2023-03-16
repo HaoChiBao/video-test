@@ -37,7 +37,7 @@ export const VideoPlayer = ({ user }) => {
       <Canvas style={{ width: '45vw' }} id={'canvas' + user.uid} />
       <div
         ref={ref}
-        style={{ width: '45vw', height: '30vw', opacity: '1'}}
+        style={{ width: '45vw', height: '30vw', opacity: '1' }}
       >
       </div>
     </div>

@@ -1,7 +1,9 @@
-.video-output{
-    width: 60vw;
+.video-output {
+    width: 35vw;
 }
+
 .video-output Canvas {
     width: 100%;
+    border-radius: 29px;
     /* max-height: 30vw; */
 }

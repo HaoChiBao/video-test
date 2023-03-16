@@ -24,7 +24,6 @@ button:disabled {
 }
 
 .inputContainer {
-    display: flex;
-    margin: 4%;
+    margin: 5%;
     justify-content: center;
 }

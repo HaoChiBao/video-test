@@ -5,13 +5,21 @@ export const IconBar = () => {
 
 
     return (
+
         <div style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: '3%'
+            justifyContent: 'center',
+
         }}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginTop: '3%'
+            }}>
 
+                helllo
 
+            </div>
         </div>
     );
 };
