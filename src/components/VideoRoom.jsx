@@ -94,8 +94,8 @@ export const VideoRoom = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 40vw)",
-          marginRight: "4vw",
-          columnGap: "8vw",
+          marginRight: "1vw",
+          columnGap: "1vw",
           rowGap: "5vw",
         }}
       >

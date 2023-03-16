@@ -10,11 +10,18 @@ export default function Video() {
         return (<p>fadsfadf</p>)
     }
     return (
+
         <div>
-            <h1>Meeting Name</h1>
-            <button onClick={turnMediaPipeOn()}>Turn On Hand Tracking</button>
+            <h1 style={{ marginTop: '4%', marginBottom: '4%' }}
+
+            >Meeting Name</h1>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+                <button onClick={turnMediaPipeOn()}>Turn On Hand Tracking</button>
             <VideoRoom></VideoRoom>
-            <IconBar></IconBar>
+                <IconBar></IconBar>
+            </div>
         </div>
+
   );
 }
