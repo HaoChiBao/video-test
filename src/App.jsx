@@ -1,14 +1,19 @@
-
-import { Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { useState } from 'react';
 import Dashboard from './Dashboard';
 import Video from './Video';
 
 
 function App() {
-  return (<Routes>
-    <Route exact path="/" element={<Dashboard />} />
-    <Route exact path="/join" element={<Video />} />
-  </Routes>);
+  const [joined, setJoined] = useState(false);
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {!joined && <Dashboard setJoined={setJoined} />}
+      {joined && <Video />}
+    </div>
+  );
 }
+
 
 export default App;

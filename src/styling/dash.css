@@ -1,0 +1,13 @@
+.join {
+
+    border-radius: 20px;
+    border-width: 0;
+    width: 350px;
+    padding: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #2D3BBB, #0C8F8F);
+}
