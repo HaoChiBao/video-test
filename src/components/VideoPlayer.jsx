@@ -41,10 +41,11 @@ export const VideoPlayer = ({ user }) => {
     const video = document.querySelector(`#video_${user.videoTrack._ID}`)
     console.log(localUid, user.uid)
     console.log(video)
-    if(localUid === user.uid){
+    if (localUid === user.uid) {
       video.style.transform = 'scaleX(-1)'
+      video.style.objectFit = 'cover'
     }
-    
+
   });
 
   return (

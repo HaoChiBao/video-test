@@ -35,7 +35,7 @@ export default function Video() {
     return (
 
         <div>
-            <h1 style={{ marginTop: '4%', marginBottom: '4%' }}
+            <h1 style={{ marginTop: '4%', marginBottom: '2%' }}
             >WSE Coffee Chats</h1>
 
             <div {...getRootProps()}>

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 
-    width: 40vh;
+    width: 45vh;
     max-width: 50vw;
 
     height: 80vh;
@@ -13,6 +13,8 @@
     border-radius: 1rem 1rem 0 0;
 
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
+    border-color: #2A2E4F;
+    border-width: 0;
 
     background-color: #2A2E4F;
     position: fixed;
@@ -23,6 +25,9 @@
 
 .chat-container .chat-header {
     display: flex;
+    border-radius: 1rem 1rem 0 0;
+
+    background-color: #2A2E4F;
     justify-content: center;
     align-items: center;
     padding: 1rem;
