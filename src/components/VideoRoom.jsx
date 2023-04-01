@@ -16,6 +16,7 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
+
 export const VideoRoom = () => {
   const [users, setUsers] = useState([]);
   const [localTracks, setLocalTracks] = useState([]);
@@ -40,21 +41,44 @@ export const VideoRoom = () => {
   };
 
   let temp = null;
+  let tracks = [0,0]
+  tracks[0] = AgoraRTC.createMicrophoneAudioTrack();
 
   useEffect(() => {
+    const localUid = localStorage.getItem('wse-video-chat-uid')
+    console.log(localUid)
     client.on("user-published", handleUserJoined);
     client.on("user-left", handleUserLeft);
+
+    navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true,
+    }).then(stream => {
+      var videoTracks = stream.getVideoTracks();
+      tracks[1] = AgoraRTC.createCustomVideoTrack({
+        mediaStreamTrack: videoTracks[0],
+      });
+    })
+
+    // const video = document.querySelector('.canvas-output');
+    // const stream = video.captureStream();
+    // var videoTracks = stream.getVideoTracks();
+    // tracks[1] = AgoraRTC.createCustomVideoTrack({
+    //   mediaStreamTrack: videoTracks[0],
+    // });
 
     client
       .join(APP_ID, CHANNEL, TOKEN, UUID)
       .then((uid) =>
         Promise.all([
-          AgoraRTC.createMicrophoneAndCameraTracks(),
+          tracks[0],
+          tracks[1],
+          //tracks[1],
           uid,
         ])
       )
-      .then(([tracks, uid]) => {
-        const [audioTrack, videoTrack] = tracks;
+      .then(([audioT, videoT, uid]) => {
+        const [audioTrack, videoTrack] = [audioT, videoT];
         setLocalTracks(tracks);
         setUsers((previousUsers) => [
           ...previousUsers,
@@ -64,8 +88,8 @@ export const VideoRoom = () => {
             audioTrack,
           },
         ]);
-        client.publish(tracks);
-        temp = tracks;
+        client.publish([audioT, videoT]);
+        temp = [audioT, videoT];
         // console.log(temp, 'temp')
       });
 
