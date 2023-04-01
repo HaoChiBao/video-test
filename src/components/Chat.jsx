@@ -54,19 +54,22 @@ const Chat = (props) => {
                     console.log('new messages loading:')
                     setLastMessageCount(msgData.length)
                     // setMessages(msgData)
-
-                    document.querySelector('.chat-body').innerHTML = '';
-                    for(let i = 0; i < msgData.length; i++){
-                        const currMsg = msgData[i];
-                        let type = 'other';
-                        console.log(currMsg.username, ":", state.username)
-                        if(currMsg.username == state.username){
-                            type = 'user'
+                    if(document.querySelector('.chat-body') != null){
+                        
+                        document.querySelector('.chat-body').innerHTML = '';
+                        for(let i = 0; i < msgData.length; i++){
+                            const currMsg = msgData[i];
+                            let type = 'other';
+                            console.log(currMsg.username, ":", state.username)
+                            if(currMsg.username == state.username){
+                                type = 'user'
+                            }
+                            appendMessage(currMsg.message, currMsg.username, type)
                         }
-                        appendMessage(currMsg.message, currMsg.username, type)
+                        console.log(msgData)
+                        // console.log(lastMessageCount)
+                    
                     }
-                    console.log(msgData)
-                    // console.log(lastMessageCount)
                 }
 
             })
