@@ -10,17 +10,17 @@
     font-family: 'Poppins', sans-serif;
     margin: 4%;
     background: linear-gradient(90deg, #2D3BBB, #0C8F8F);
-    transition: background-color 0.5s ease;
+    transition: background-color 2s ease;
 }
 
 .join:hover {
     background: linear-gradient(90deg, #0C8F8F, #2D3BBB);
-    transition: background-color 0.5s ease;
+    transition: background-color 2s ease;
 }
 
 .join:disabled {
     background: grey;
-    transition: background-color 0.5s ease;
+    transition: background-color 2s ease;
 }
 
 .inputContainer {

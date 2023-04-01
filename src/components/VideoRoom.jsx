@@ -210,6 +210,7 @@ export const VideoRoom = () => {
   const [videoIcon, setVideoIcon] = useState('https://www.svgrepo.com/show/310197/video.svg')
   const [audioIcon, setAudioIcon] = useState('https://www.svgrepo.com/show/309778/mic-on.svg')
   const [exitIcon, setExitIcon] = useState('https://www.svgrepo.com/show/309378/call-outbound.svg')
+  const [handIcon, setHandIcon] = useState('https://www.svgrepo.com/show/437006/hand-raised.svg')
 
   return (
     <div
@@ -238,50 +239,65 @@ export const VideoRoom = () => {
         ))}
       </div>
       <div className="video-buttons">
-          <button
+        <button
           onClick={() => {
-              console.log(localTracks)
-              const videoTrack = localTracks[1];
-              videoTrack.setEnabled(!videoTrack.enabled);
-              if(videoTrack.enabled){
-                  setVideoIcon('https://www.svgrepo.com/show/310199/video-off.svg')
-              } else {
-                  setVideoIcon('https://www.svgrepo.com/show/310197/video.svg')
-              }
+            console.log(localTracks)
+            const videoTrack = localTracks[1];
+            videoTrack.setEnabled(!videoTrack.enabled);
+            if (videoTrack.enabled) {
+              setVideoIcon('https://www.svgrepo.com/show/310199/video-off.svg')
+            } else {
+              setVideoIcon('https://www.svgrepo.com/show/310197/video.svg')
+            }
           }}
-          >
-              <img src = {videoIcon}/>
-          </button>
-          <button
+        >
+          <img src={videoIcon} />
+        </button>
+        <button
           onClick={() => {
-              const audioTrack = localTracks[0];
-              audioTrack.setEnabled(!audioTrack.enabled);
-              if(audioTrack.enabled){
-                  setAudioIcon('https://www.svgrepo.com/show/309777/mic-off.svg')
-              } else {
-                  setAudioIcon('https://www.svgrepo.com/show/309778/mic-on.svg')
-              }
+            const audioTrack = localTracks[0];
+            audioTrack.setEnabled(!audioTrack.enabled);
+            if (audioTrack.enabled) {
+              setAudioIcon('https://www.svgrepo.com/show/309777/mic-off.svg')
+            } else {
+              setAudioIcon('https://www.svgrepo.com/show/309778/mic-on.svg')
+            }
           }}
-          >
-              <img src = {audioIcon}/>   
-          </button>
+        >
+          <img src={audioIcon} />
+        </button>
 
-          <button
+        <button
           onClick={() => {
-              
-              for (let localTrack of localTracks) {
+            const audioTrack = localTracks[0];
+            audioTrack.setEnabled(!audioTrack.enabled);
+            if (audioTrack.enabled) {
+              setHandIcon('https://www.svgrepo.com/show/437009/hand-raised-slash.svg')
+            } else {
+              setHandIcon('https://www.svgrepo.com/show/437006/hand-raised.svg')
+            }
+          }}
+        >
+          <img src={handIcon} />
+        </button>
+
+        <button
+          onClick={() => {
+
+            for (let localTrack of localTracks) {
               localTrack.stop();
               localTrack.close();
-              }
-              client.off("user-published", handleUserJoined);
-              client.off("user-left", handleUserLeft);
-              client.unpublish(temp).then(() => client.leave());
-              window.location.assign('/')
+            }
+            client.off("user-published", handleUserJoined);
+            client.off("user-left", handleUserLeft);
+            client.unpublish(temp).then(() => client.leave());
+            window.location.assign('/')
           }}
-          >
-              <img src = {exitIcon}/>
-          </button>
-        </div>
+        >
+          <img src={exitIcon} />
+        </button>
+
+      </div>
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import React from "react";
 import { VideoRoom } from "./components/VideoRoom";
-import { IconBar } from "./components/IconBar";
 
 import { useDropzone } from "react-dropzone";
-import {useState} from 'react';
+import { useState } from 'react';
 
 import Chat from "./components/Chat";
 
@@ -13,26 +12,26 @@ export default function Video() {
     const [files, setFiles] = useState([])
 
     const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/*",
-    onDrop: (acceptedFiles) => {
-        setFiles(
-        acceptedFiles.map((file) =>
-            Object.assign(file, {
-            preview: URL.createObjectURL(file),
-            })
-        )
-        )
-    },
+        accept: "image/*",
+        onDrop: (acceptedFiles) => {
+            setFiles(
+                acceptedFiles.map((file) =>
+                    Object.assign(file, {
+                        preview: URL.createObjectURL(file),
+                    })
+                )
+            )
+        },
     })
 
     const images = files.map((file) => (
         <div key={file.name}>
-          <div>
-            <img src={file.preview} style={{ width: "200px" }} alt="preview" />
-          </div>
+            <div>
+                <img src={file.preview} style={{ width: "200px" }} alt="preview" />
+            </div>
         </div>
-      ))
-  
+    ))
+
     return (
 
         <div>
@@ -46,12 +45,10 @@ export default function Video() {
             <div>{images}</div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <button>Turn On Hand Tracking</button>
-            <VideoRoom></VideoRoom>
-                {/* <IconBar></IconBar> */}
-            {/* <Chat/> */}
+                <VideoRoom></VideoRoom>
+                {/* <Chat/> */}
             </div>
         </div>
 
-  );
+    );
 }

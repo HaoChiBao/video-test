@@ -2,8 +2,9 @@
     width: 37vw;
 }
 
-.video-output Canvas {
+.video-output .video {
     width: 100%;
+    aspect-ratio: 16/9;
     border-radius: 1rem;
     /* max-height: 30vw; */
 }
