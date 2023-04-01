@@ -184,7 +184,7 @@ export const VideoPlayer = ({ user }) => {
         ref={ref}
       style={{ 
         width: '45vw', height: '30vw', 
-      position:'absolute', opacity:'0.5', pointerEvents:'none', zIndex:'-1' }}
+      position:'absolute', opacity:'0', pointerEvents:'none', zIndex:'-1' }}
       >
       </div>
     </div>

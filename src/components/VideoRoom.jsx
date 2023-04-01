@@ -3,6 +3,7 @@ import AgoraRTC from "agora-rtc-sdk-ng";
 import { VideoPlayer } from "./VideoPlayer";
 import Gradient from "./Gradient";
 
+import './VideoRoom.css'
 import config from "../config.jsx";
 
 const APP_ID = "fd724da3607e4f568c1775a94077234d";
@@ -84,6 +85,10 @@ export const VideoRoom = () => {
     console.log('f');
   }
 
+  const [videoIcon, setVideoIcon] = useState('https://www.svgrepo.com/show/310197/video.svg')
+  const [audioIcon, setAudioIcon] = useState('https://www.svgrepo.com/show/309778/mic-on.svg')
+  const [exitIcon, setExitIcon] = useState('https://www.svgrepo.com/show/309378/call-outbound.svg')
+
   return (
     <div
       style={{
@@ -107,6 +112,51 @@ export const VideoRoom = () => {
           <VideoPlayer key={user.uid} user={user} />
         ))}
       </div>
+      <div className="video-buttons">
+          <button
+          onClick={() => {
+              console.log(localTracks)
+              const videoTrack = localTracks[1];
+              videoTrack.setEnabled(!videoTrack.enabled);
+              if(videoTrack.enabled){
+                  setVideoIcon('https://www.svgrepo.com/show/310199/video-off.svg')
+              } else {
+                  setVideoIcon('https://www.svgrepo.com/show/310197/video.svg')
+              }
+          }}
+          >
+              <img src = {videoIcon}/>
+          </button>
+          <button
+          onClick={() => {
+              const audioTrack = localTracks[0];
+              audioTrack.setEnabled(!audioTrack.enabled);
+              if(audioTrack.enabled){
+                  setAudioIcon('https://www.svgrepo.com/show/309777/mic-off.svg')
+              } else {
+                  setAudioIcon('https://www.svgrepo.com/show/309778/mic-on.svg')
+              }
+          }}
+          >
+              <img src = {audioIcon}/>   
+          </button>
+
+          <button
+          onClick={() => {
+              
+              for (let localTrack of localTracks) {
+              localTrack.stop();
+              localTrack.close();
+              }
+              client.off("user-published", handleUserJoined);
+              client.off("user-left", handleUserLeft);
+              client.unpublish(temp).then(() => client.leave());
+              window.location.assign('/')
+          }}
+          >
+              <img src = {exitIcon}/>
+          </button>
+        </div>
     </div>
   );
 };

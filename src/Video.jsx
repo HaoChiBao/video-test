@@ -46,7 +46,7 @@ export default function Video() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
                 <button>Turn On Hand Tracking</button>
             <VideoRoom></VideoRoom>
-                <IconBar></IconBar>
+                {/* <IconBar></IconBar> */}
             </div>
         </div>
 
