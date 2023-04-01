@@ -6,6 +6,8 @@ import Gradient from "./Gradient";
 import './VideoRoom.css'
 import config from "../config.jsx";
 
+import Chat from "./Chat";
+
 const APP_ID = "fd724da3607e4f568c1775a94077234d";
 const APP_CERTIFICATE = "06a4d79522d04794a5bae3b1402812ef"
 
@@ -97,6 +99,7 @@ export const VideoRoom = () => {
         alignItems: "center",
       }}
     >
+      <Chat uuid = {UUID}/>
       {/* <Gradient></Gradient> */}
 
       <div

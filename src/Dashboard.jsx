@@ -16,6 +16,9 @@ import "firebase/compat/analytics";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import "firebase/compat/auth";
+
+// import Chat from "./components/Chat";
+
 function main(){}
 
 window.onload = function () {
@@ -81,6 +84,7 @@ function Dashboard({ setJoined }) {
 
     return (
         <div style={{ position: "relative" }}>
+            {/* <Chat/> */}
             <Gradient
                 width={screenWidth}
                 height={screenHeight}

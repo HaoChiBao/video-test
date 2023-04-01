@@ -5,6 +5,8 @@ import { IconBar } from "./components/IconBar";
 import { useDropzone } from "react-dropzone";
 import {useState} from 'react';
 
+import Chat from "./components/Chat";
+
 export default function Video() {
     let isMediaPipeOn = false;
 
@@ -47,6 +49,7 @@ export default function Video() {
                 <button>Turn On Hand Tracking</button>
             <VideoRoom></VideoRoom>
                 {/* <IconBar></IconBar> */}
+            {/* <Chat/> */}
             </div>
         </div>
 
