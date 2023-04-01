@@ -6,10 +6,10 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import "firebase/compat/analytics";
-import {getDoc} from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 import './VideoPlayer.css'
-import {useState} from "react";
+import { useState } from "react";
 
 
 export const VideoPlayer = ({ user }) => {
@@ -19,19 +19,19 @@ export const VideoPlayer = ({ user }) => {
     const db = firebase.firestore();
     const docRef = db.collection("loggedIn").doc(uid);
     getDoc(docRef)
-    .then((promise) => {
-      console.log(promise.data().uid)
-      // console.log(promise)
-      setUsername(promise.data().uid)
-    })
-    .catch((error) => {
-      console.log(error)
-      setUsername(error)
-    })
+      .then((promise) => {
+        console.log(promise.data().uid)
+        // console.log(promise)
+        setUsername(promise.data().uid)
+      })
+      .catch((error) => {
+        console.log(error)
+        setUsername(error)
+      })
   }
 
   const ref = useRef();
-  
+
   setUsernameFromUid(user.uid)
 
   useEffect(() => {
@@ -46,9 +46,9 @@ export const VideoPlayer = ({ user }) => {
     }
     
   });
-  
+
   return (
-    <div style = {{
+    <div style={{
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -56,16 +56,14 @@ export const VideoPlayer = ({ user }) => {
     }}>
       <div className='video-output'>
         {/* <Canvas style={{ opacity: '1'}} id={'canvas' + user.uid} className = 'canvas-output'/> */}
-        <div className = 'username'>
-          {username}
+        <div
+          className='video'
+          ref={ref}
+        >
+          <div className='username'>
+            {username}
+          </div>
         </div>
-      </div>
-      <div
-        ref={ref}
-      style={{ 
-        width: '45vw', height: '30vw', 
-      position:'relative', opacity:'1', pointerEvents:'none', zIndex:'-1' }}
-      >
       </div>
     </div>
   );
