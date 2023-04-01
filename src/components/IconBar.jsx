@@ -14,20 +14,52 @@ export const IconBar = () => {
         <div style={{
             display: 'flex',
             justifyContent: 'center',
-            width: '100vw'
-
+            width: '100vw',
+            position: 'fixed',
+            bottom: '0',
         }}>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: '25vw',
-                marginTop: '20px'
+                // width: '',
             }}>
 
-                <button> <FontAwesomeIcon icon={faVideoCamera} size="3x" /></button>
-                <button> <FontAwesomeIcon icon={faPhoneSlash} size="3x" /></button>
-                <button> <FontAwesomeIcon icon={faMicrophone} size="3x" /></button>
-
+                <button 
+                    style={{
+                        backgroundColor: 'gray',
+                        borderRadius: '100%',
+                        height: '4rem',
+                        aspectRatio: '1/1',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '1rem',
+                    }}
+                    > <FontAwesomeIcon icon={faVideoCamera} size="2x" /></button>
+                <button
+                    style={{
+                        backgroundColor: 'gray',
+                        borderRadius: '100%',
+                        height: '4rem',
+                        aspectRatio: '1/1',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '1rem',
+                    }}
+                    > <FontAwesomeIcon icon={faPhoneSlash} size="2x" /></button>
+                <button
+                    style={{
+                        backgroundColor: 'gray',
+                        borderRadius: '100%',
+                        height: '4rem',
+                        aspectRatio: '1/1',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '1rem',
+                    }}
+                > <FontAwesomeIcon icon={faMicrophone} size="2x" /></button>
 
             </div>
         </div>

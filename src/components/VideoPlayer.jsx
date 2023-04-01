@@ -122,7 +122,7 @@ export const VideoPlayer = ({ user }) => {
     }});
     hands.setOptions({
       maxNumHands: 2,
-      modelComplexity: 1, 
+      modelComplexity: 0, 
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5
     });
@@ -166,18 +166,25 @@ export const VideoPlayer = ({ user }) => {
     }
     
   });
-
+  
   return (
-    <div>
-      <div className = 'username'>
-        {username}
-      </div>
+    <div style = {{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <div className='video-output'>
-       <Canvas style={{ opacity: '1'}} id={'canvas' + user.uid} className = 'canvas-output'/>
+        <Canvas style={{ opacity: '1'}} id={'canvas' + user.uid} className = 'canvas-output'/>
+        <div className = 'username'>
+          {username}
+        </div>
       </div>
       <div
         ref={ref}
-      style={{ position:'absolute', opacity:'1' }}
+      style={{ 
+        width: '45vw', height: '30vw', 
+      position:'absolute', opacity:'0.5', pointerEvents:'none', zIndex:'-1' }}
       >
       </div>
     </div>

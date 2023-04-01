@@ -6,7 +6,9 @@ import Gradient from "./Gradient";
 import config from "../config.jsx";
 
 const APP_ID = "fd724da3607e4f568c1775a94077234d";
-const TOKEN = "007eJxTYIhnmboncn4O59XcCo0d3VKeS6xVekusXr969v9cHPfNh64KDGkp5kYmKYnGZgbmqSZppmYWyYbm5qaJliYG5uZGxiYp/8qEUhoCGRl4TwuxMjJAIIjPwpCbmJnHwAAAJ8AegA==";
+const APP_CERTIFICATE = "06a4d79522d04794a5bae3b1402812ef"
+
+const TOKEN = "007eJxTYFDQf+nFsdLmUpzH5kyu6Y/S5zDOZ3g7j/tHVqJT4/cPIikKDGkp5kYmKYnGZgbmqSZppmYWyYbm5qaJliYG5uZGxiYpvKXqKQ2BjAy611cwMjJAIIjPwpCbmJnHwAAAwvIdLg==";
 const CHANNEL = "main";
 
 const client = AgoraRTC.createClient({
